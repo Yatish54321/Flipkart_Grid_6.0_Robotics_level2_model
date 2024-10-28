@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Grid 6.0 Robotics Model - Smart Vision Technology Quality Control</title>
+
+    <div class="logo-container">
+        <img src="flipkart.png" alt="Flipkart Logo" class="rotating-logo">
+        
+    </div>
+    <div class="logo-container"></div>
+    <img src="grid.png" alt="Grid 6.0 Logo" class="logo">
+    </div>
+    
+    <style>
+        /* Importing Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 20;
+            box-sizing: content-box;
+        }
+
+        
+        /* Prevent text selection */   
+
+
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            font-family: 'Quicksand', sans-serif;
+            color: #1e1e1e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #065bba;
+            position: relative;
+            perspective: 1000px;
+        }
+
+
+         /* Typing and deleting animation */
+         @keyframes typing {
+            0%, 40% { width: 0; }
+            50%, 90% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        /* Blinking cursor */
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            80% { border-color: orange; }
+        }
+
+        @font-face {
+            font-family: 'Algerian';
+            src: url('fonts/Algerian.ttf') format('truetype'); /* or woff if you have that */
+        }
+        
+        .algerian-text {
+            font-family: 'Algerian', sans-serif;
+        }
+        
+
+        .logo-container {
+            position: absolute;
+            top: 20px; /* Adjust to position it from the top */
+            right: 50px; /* Adjust to position it from the right */
+            z-index: 1000;
+        }
+        
+        .logo {
+            position: absolute;
+            top:30px;
+            right:20px;
+            width: 130px; /* Adjust the size as needed */
+            animation: jump 1.5s ease-in-out infinite;
+            right:20px;
+        }
+        
+        @keyframes jump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); /* Adjust the height of the jump */
+            }
+        }
+        
+
+
+
+
+        /* Container for positioning the logo in the top-right corner */
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+        }
+
+        /* Logo image styling and animation */
+        .rotating-logo {
+            width: 90px; /* Adjust size as needed */
+            height: auto;
+            animation: rotate360 8s linear infinite;
+        }
+
+        /* Keyframes for 360-degree rotation */
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+
+        /* Dynamic Background */
+        .background {
+            position: absolute;
+            top: 20;
+            left: 20;
+            right: 20;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(150deg, #1e1e1e,#065bba);
+            clip-path: polygon(100% 0, 50% 0, 100% 70%, 0 100%);
+            opacity: 0.6;
+            animation: moveBg 3s infinite alternate ease-in-out;
+            z-index: 0;
+        }
+
+        @keyframes moveBg {
+            50% { transform: scale(1) translateX(10%); }
+            100% { transform: scale(1.1) translateY(-10%); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px #1e1e1e;
+            padding: 40px;
+            text-align: center;
+            transform: rotateY(0deg);
+            transition: transform 0.4s;
+        }
+
+        .container:hover {
+            transform: rotateX(15deg);
+        }
+        
+        .button:hover {
+            background-color: #065bba;
+            transform: scale(1.58);
+            box-shadow: 2 8px 15px #065bba(0, 0, 0, 0.25);
+        }
+
+
+        /* Bounce-In and Zoom Animation for Heading */
+        @keyframes bounceZoomIn {
+            0% { opacity: 0; transform: scale(0.8) translateY(-30px); }
+            50% { opacity: 1; transform: scale(1.05) translateY(0); }
+            100% { transform: scale(1); }
+        }
+
+        /* Main Heading Jump Effect */
+
+        @keyframes jumpInfinite {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-10px); }
+        }
+
+        h1 {
+            color: #065bba;
+            font-size: 2.7em;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            animation: bounceZoomIn 1.2s ease forwards, jumpInfinite 1.5s ease-in-out 1.2s infinite;
+        }
+
+        /* Key Features */
+        .features {
+            font-size: 1.1em;
+            color: #ef9304;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        /* Button Styles */
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        
+
+         
+        /* Base Button Style */
+        .button {
+            padding: 12px 24px;
+            font-size: 1em;
+            font-weight: 700;
+            color: #fff;
+            background: #065bba;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 100%;
+            max-width: 250px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Button Hover State - Applying Multiple Effects */
+        .button:hover {
+            background-color: #FFE11B;
+            transform: scale(1.08);
+            box-shadow: 0 8px 15px rgba(0, 26, 255, 0.25);
+            animation: heartbeat 0.6s ease-in-out infinite, pulse-glow 0.7s ease-in-out infinite, glowPulse 2s infinite alternate, ripple 1.5s infinite ease-out;
+        }
+
+        /* Heartbeat Animation */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Pulse-Glow Effect */
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 0 10px #eb0303; }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px #eb0303; }
+            100% { transform: scale(1); box-shadow: 0 0 10px #eb0303; }
+        }
+
+        /* Glow Pulse Effect */
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(57, 72, 103, 0.7); }
+            50% { box-shadow: 0 0 20px rgba(57, 72, 103, 1); }
+        }
+
+        /* Ripple Effect */
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(57, 72, 103, 0.6); }
+            100% { box-shadow: 0 0 0 25px rgba(57, 72, 103, 0); }
+        }
+
+        
+        
+        /* Button Descriptions */
+        .description {
+            text-align: center;
+            color: #394867;
+            font-size: 0.9em;
+            margin-top: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 5s steps(30, end) infinite, blink-caret 0.2s step-end infinite;
+        }
+
+        /* Code Preview */
+        #code-preview {
+            display: none;
+            background: #000;
+            padding: 20px;
+            border-radius: 8px;
+            color: #00ff00; /* Hacker green */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 25px;
+            animation: slideDown 0.4s ease;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+        }
+
+        #code-preview h2 {
+            color: #fcfcfc;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        /* Attractive Effects on Features List */
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+            color: #394867;
+            transition: transform 0.2s;
+        }
+
+        .features li::before {
+            
+            position: absolute;
+            left: 0;
+            color: #00b7ff;
+            transition: transform 0.1s;
+        }
+
+        .features h2 {
+            color: #ef9304;
+            margin-bottom: 10px;
+        }
+        
+
+        .features li:hover {
+            transform: translateY(5px);
+        }
+
+        /* Scrollbar Styling */
+        #code-preview::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        #code-preview::-webkit-scrollbar-thumb {
+            background: #394867;
+            border-radius: 9px;
+            width: 5px;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* How to Use Section */
+        .how-to-use {
+            margin-top: 25px;
+            text-align: left;
+            color: #ef9304;
+        }
+
+        .how-to-use h2 {
+            color: #ef9304;
+            margin-bottom: 10px;
+        }
+
+        .how-to-use ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .how-to-use li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+            color: #394867;
+            transition: transform 0.2s;
+        }
+
+        .how-to-use li::before {
+           
+            margin-right: 8px;
+            position: absolute;
+            left: 0;
+            color: #23395b;
+            transition: transform 0.1s;
+        }
+
+        .how-to-use li:hover {
+            transform: translateX(5px);
+        }
+
+                /* Overall page setup */
+        body, html {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main content area */
+        .content {
+            flex: 1;
+            padding: 20px;
+            /* Other styling for your content */
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            width: 100%;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            
+        }
+
+        .footer-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            
+        }
+
+        .footer-content p {
+            width:100%;
+            margin: 5px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffe11b;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-media a {
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #ffe11b;
+            transform: scale(1.1);
+        }
+
+
+
+    </style>
+</head>
+
+
+<body>
+    <div class="background"></div>
+
+    <div class="container">
+        <h1 class="algerian-text">Flipkart Grid 6.0 Robotics Model <br> 🤖 <br> Smart Vision Technology 🚀 Quality Control</h1>
+
+        <div class="features">
+            <h2 class="algerian-text"> 🎯 Key Features:</h2>
+            <ul>
+                <li> ✨ Automatically extracts product details from images, such as name, category, quantity and<br> expiry date (if any).</li>
+                <li> ✨ Determines product freshness and shelf life for efficient quality control.</li>
+                <li> ✨ Applies advanced AI techniques using Qwen2-VL for optimal image analysis.</li>
+            </ul>
+        </div>
+
+        <div class="how-to-use">
+            <h2 class="algerian-text"> 🎯 How to Use the Model:</h2>
+            <ul>
+                <li> 🚀 Download the model file or Test model on Google Colab using the button provided.</li>
+                <li> 🚀 Run the model locally or on Google Colab.</li>
+                <li> 🚀 Upload the image(s) of the product to analyze its details.</li>
+                <li> 🚀 View the results displayed in the application or generated Excel sheet.</li>
+            </ul>
+        </div>
+
+        <div class="button-group">
+            <div class="button-wrapper">
+                <a href="https://github.com/Yatish54321/Flipkart_Grid_6.0_Robotics_level2_model/releases/download/Qwen-2VL-2B/Flipkart_Grid_Model.exe" class="button" download><span>Download Model File</span></a>
+                <p class="description">Download the compiled model file to analyze product images locally.</p>
+            </div>
+
+            <div class="button-wrapper">
+                <a href="https://colab.research.google.com/drive/1GRHKUAWjEagav013vTvFYcb4MttJmDOw?usp=sharing" class="button" target="_blank"><span>Test on Google Colab</span></a>
+                <p class="description">Access and test the model on Google Colab with pre-configured settings.<br>Don't forget to download generated Excel sheet at the end.</p>
+            </div>
+
+            <div class="button-wrapper">
+                <a href="javascript:void(0);" class="button" onclick="previewCode()"><span>Preview Code</span></a>
+                <p class="description">Review the Python code that powers the model's functionality.</p>
+            </div>
+
+                        <div class="button-wrapper">
+                <a href="https://github.com/Yatish54321/Flipkart_Grid_6.0_Robotics_level2_model" class="button" target="_blank"><span>View on GitHub</span></a>
+                <p class="description">Visit the GitHub repository for full documentation and code details.</p>
+            </div>
+        </div>
+
+        <div id="code-preview">
+            <h2>Code Preview:</h2>
+            <pre><code>
+import re
+import openpyxl
+import cv2  # Import OpenCV for real-time capture
+from PIL import Image
+import torch
+from transformers import Qwen2VLForConditionalGeneration, AutoTokenizer, AutoProcessor
+import numpy as np
+from google.colab import files
+
+# Load the Qwen2 model and processor
+model = Qwen2VLForConditionalGeneration.from_pretrained(
+    "Qwen/Qwen2-VL-2B-Instruct",
+    torch_dtype="auto",
+    device_map="auto",
+)
+
+processor = AutoProcessor.from_pretrained("Qwen/Qwen2-VL-2B-Instruct")
+
+# Create a new Excel workbook
+workbook = openpyxl.Workbook()
+sheet = workbook.active
+sheet.title = "Product Analysis"
+
+# Add headers
+headers = ["Product Name", "Category", "Quantity", "Count", "Expiry Date", "Freshness Index", "Shelf Life"]
+sheet.append(headers)
+
+# Regular expression patterns to extract data
+packaged_product_pattern = r"Product Name: (.*)\n  - Product Category: (.*)\n  - Product Quantity: (.*)\n  - Product Count: (.*)\n  - Expiry Date: (.*)"
+fruits_vegetables_pattern = r"Type of fruit/vegetable: (.*)\n  - Freshness Index: (.*)\n  - Estimated Shelf Life: (.*)"
+
+
+# Let user upload the image
+uploaded = files.upload()
+
+# Iterate over all uploaded files
+for image_name in uploaded.keys():
+    # Open the image using PIL
+    image = Image.open(image_name)
+    image = image.resize((512, 512))
+
+    # Prepare the text prompt for predicting product details and freshness
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image",
+                    "image_url": "Captured from webcam"  # Description for internal use
+                },
+                {
+                    "type": "text",
+                    "text": """This image contains fruits, vegetables, or packaged products.
+                    Please analyze the image and provide:
+                    - For packaged products:
+                        - Product Name
+                        - Product Category
+                        - Product Quantity
+                        - Product Count
+                        - Expiry Date (if available)
+                    - For fruits and vegetables:
+                        - Type of fruit/vegetable
+                        - Freshness Index (based on visual cues)
+                        - Estimated Shelf Life"""
+                }
+            ]
+        }
+    ]
+
+    # Prepare the text prompt for processing
+    text_prompt = processor.apply_chat_template(messages, add_generation_prompt=True)
+
+    # Process the image and prompt for model input
+    inputs = processor(
+        text=[text_prompt],
+        images=[image],
+        padding=True,
+        return_tensors="pt"
+    )
+
+    # Move inputs to GPU if available
+    inputs = inputs.to("cuda" if torch.cuda.is_available() else "cpu")
+
+    # Generate output from the model
+    output_ids = model.generate(**inputs, max_new_tokens=1024)
+
+    # Decode the generated output
+    generated_ids = [
+        output_ids[len(input_ids):]
+        for input_ids, output_ids in zip(inputs.input_ids, output_ids)
+    ]
+    output_text = processor.batch_decode(
+        generated_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True
+    )[0]
+
+    # Print the output text for the current image
+    print(f"Analysis Output for the captured frame:")
+    print(output_text)
+
+    # Extract packaged product information
+    packaged_product_match = re.search(packaged_product_pattern, output_text)
+    fruits_vegetables_match = re.search(fruits_vegetables_pattern, output_text)
+
+    if packaged_product_match:
+        product_name = packaged_product_match.group(1).strip()
+        category = packaged_product_match.group(2).strip()
+        quantity = packaged_product_match.group(3).strip()
+        count = packaged_product_match.group(4).strip()
+        expiry_date = packaged_product_match.group(5).strip()
+    else:
+        product_name = category = quantity = count = expiry_date = "N/A"
+
+    if fruits_vegetables_match:
+        # Overwrite product fields with fruit/vegetable data if applicable
+        product_name = fruits_vegetables_match.group(1).strip()
+        category = "Fruit/Vegetable"
+        freshness_index = fruits_vegetables_match.group(2).strip()
+        shelf_life = fruits_vegetables_match.group(3).strip()
+    else:
+        freshness_index = shelf_life = "N/A"
+
+    # Insert row into Excel
+    sheet.append([product_name, category, quantity, count, expiry_date, freshness_index, shelf_life])
+
+# Save the workbook
+workbook.save("product_analysis.xlsx")
+print("Data saved to product_analysis.xlsx")
+
+            </code></pre>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p>&copy; 2024 My Flipkart GRiD 6.0 Robotics Model - Smart Vision Technology Quality Control. All Rights Reserved.</p>
+                <p>Developed by Yatish Kumar Verma</p>
+            </div>
+            
+            
+        </div>
+    </footer>
+
+
+
+    <script>
+        function previewCode() {
+            const codePreview = document.getElementById('code-preview');
+            codePreview.style.display = codePreview.style.display === 'none' ? 'block' : 'none';
+        }
+
+
+        // Disable right-click
+        document.addEventListener("contextmenu", function(e){
+            e.preventDefault();
+        }, false);
+           
+        // Disable text selection
+        document.addEventListener("selectstart", function(e){
+            e.preventDefault();
+        }, false);
+            
+        // Disable copy shortcut (Ctrl+C or Cmd+C)
+        document.addEventListener("copy", function(e){
+            e.preventDefault();
+            alert("Copying is disabled on this page.");
+        });
+        
+            
+
+    </script>
+</body>
+</html>
